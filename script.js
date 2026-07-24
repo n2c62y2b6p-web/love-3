@@ -1,40 +1,103 @@
-let progress = 0;
+let mission = 0;
 
 
-// правильное фото пока поставим №2
-let correctPhoto = 2;
+// дата миссии
+let target = new Date("August 8, 2026 00:00:00").getTime();
 
 
-function startGame(){
 
-document.getElementById("start").style.display="none";
-document.getElementById("timer").style.display="block";
+let timer = setInterval(function(){
 
-startTimer();
+
+let now = new Date().getTime();
+
+let distance = target - now;
+
+
+let days = Math.floor(
+distance / (1000*60*60*24)
+);
+
+
+let hours = Math.floor(
+(distance % (1000*60*60*24))
+/(1000*60*60)
+);
+
+
+let minutes = Math.floor(
+(distance % (1000*60*60))
+/(1000*60)
+);
+
+
+let seconds = Math.floor(
+(distance % (1000*60))
+/1000
+);
+
+
+
+document.getElementById("timer").innerHTML =
+days+"д "+hours+"ч "+minutes+"м "+seconds+"с";
+
+
+
+if(distance <=0){
+
+clearInterval(timer);
+
+document.getElementById("screen1").style.display="none";
+
+document.getElementById("screen2").style.display="block";
 
 }
 
 
-function startTimer(){
-
-let date = new Date("August 8, 2026 00:00:00").getTime();
-
-
-let x=setInterval(function(){
-
-let now=new Date().getTime();
-
-let distance=date-now;
-
-
-let days=Math.floor(distance/(1000*60*60*24));
-
-
-document.getElementById("countdown").innerHTML=
-days+" дней";
-
-
 },1000);
+
+
+
+function startMission(){
+
+document.getElementById("screen2").style.display="none";
+
+document.getElementById("mission1").style.display="block";
+
+mission=1;
+
+updateProgress();
+
+}
+
+
+
+function answer(photo){
+
+
+// пока правильный ответ фото 2
+
+if(photo===2){
+
+
+document.getElementById("mission1").style.display="none";
+
+document.getElementById("success").style.display="block";
+
+
+mission=1;
+
+updateProgress();
+
+
+}
+
+else{
+
+alert("❌ Неверно. Попробуй ещё раз");
+
+}
+
 
 }
 
@@ -42,37 +105,18 @@ days+" дней";
 
 function nextMission(){
 
-document.querySelectorAll(".hidden").forEach(x=>x.style.display="none");
-
-document.getElementById("mission1").style.display="block";
+alert("Следующий уровень добавим дальше 🎮");
 
 }
 
 
 
-function checkAnswer(photo){
+function updateProgress(){
 
-if(photo===correctPhoto){
-
-progress=20;
-
-document.getElementById("percent").innerHTML=progress;
-
-document.getElementById("barFill").style.width=progress+"%";
+document.getElementById("missionNumber").innerHTML=mission;
 
 
-document.getElementById("mission1").style.display="none";
-
-document.getElementById("result").style.display="block";
-
-document.getElementById("resultText").innerHTML=
-"✅ Воспоминание восстановлено ❤️";
-
-}
-else{
-
-alert("❌ Не то фото. Попробуй ещё раз");
-
-}
+document.getElementById("barFill").style.width=
+(mission/4*100)+"%";
 
 }
