@@ -18,13 +18,6 @@
 Нажми кнопку, чтобы начать игру
 </p>
 
-<h2>⏳ До открытия миссии:</h2>
-
-<div id="timer">
-
-00:00:00:00
-
-</div>
 <button onclick="startGame()">
 НАЧАТЬ
 </button>
@@ -42,9 +35,27 @@
 Найти секретную точку встречи ❤️
 </p>
 
+<h2>⏳ До открытия миссии:</h2>
+
+<div id="timer">
+00:00:00:00
 </div>
 
-let eventDate = new Date("2026-08-08 12:00:00").getTime();
+</div>
+
+
+<script>
+
+function startGame() {
+
+    document.getElementById("startScreen").style.display = "none";
+
+    document.getElementById("gameScreen").style.display = "block";
+
+}
+
+
+let eventDate = new Date("2026-08-01 18:00:00").getTime();
 
 let timer = setInterval(function() {
 
@@ -61,15 +72,6 @@ document.getElementById("timer").innerHTML =
 days + "д " + hours + "ч " + minutes + "м " + seconds + "с";
 
 }, 1000);
-<script>
-
-function startGame() {
-
-    document.getElementById("startScreen").style.display = "none";
-
-    document.getElementById("gameScreen").style.display = "block";
-
-}
 
 </script>
 
