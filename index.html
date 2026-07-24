@@ -205,6 +205,52 @@ font-size:40px;
 ">
 📷
 </div>
+<!-- ЭКРАН 5 — МИССИЯ 2 -->
+
+<div class="screen" id="screen5">
+
+<h1>📷 МИССИЯ 2</h1>
+
+<h2>
+Найди правильное воспоминание
+</h2>
+
+<p>
+На каком фото люди, которые закрыли ипотеку?
+</p>
+
+
+<button class="option" onclick="wrongAnswer()">
+📷 Фото 1
+</button>
+
+<button class="option" onclick="answerMission2()">
+📷 Фото 2
+</button>
+
+<button class="option" onclick="wrongAnswer()">
+📷 Фото 3
+</button>
+
+<button class="option" onclick="wrongAnswer()">
+📷 Фото 4
+</button>
+
+
+<div id="mission2Result" style="display:none;">
+
+<p>
+🏠 Воспоминание подтверждено
+</p>
+
+<button onclick="goMission3()">
+▶ ДАЛЕЕ
+</button>
+
+</div>
+
+
+</div>
 
 <button onclick="showPhoto()">
 🔍 Открыть фото
@@ -286,11 +332,29 @@ document.getElementById("photoBlock")
 
 function answerCorrect(){
 
-alert("🧠 Воспоминание восстановлено!");
+document.getElementById("photoBlock")
+
+.style.display="block";
+
+}
+
+function answerMission2(){
+
+document.getElementById("mission2Result")
+.style.display="block";
 
 }
 
 
+function goMission3(){
+
+document.getElementById("screen5")
+.classList.remove("active");
+
+document.getElementById("screen6")
+.classList.add("active");
+
+}
 </script>
 
 
