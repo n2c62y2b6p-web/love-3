@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Secret Mission</title>
+<title>SECRET MISSION</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,45 +11,68 @@
 
 <h1>🎮 SECRET MISSION</h1>
 
-<div id="progress">
-Миссия: <span id="percent">0</span>%
+<div class="progress">
+Миссия: <span id="missionNumber">0</span>/4
+
 <div class="bar">
 <div id="barFill"></div>
 </div>
+
 </div>
 
 
-<div id="start">
+<!-- ЭКРАН 1 -->
 
-<h2>Тебе предстоит пройти секретную миссию...</h2>
+<div id="screen1">
+
+<h2>🛰 Система запущена</h2>
 
 <p>
-Восстанови воспоминания и найди финальную точку.
+До начала секретной миссии:
 </p>
 
-<button onclick="startGame()">
-НАЧАТЬ
+<h1 id="timer"></h1>
+
+<p>
+🟢 СТАТУС: ОЖИДАНИЕ МИССИИ
+</p>
+
+</div>
+
+
+
+<!-- ЭКРАН 2 -->
+
+<div id="screen2" class="hidden">
+
+<h2>🚨 ДОСТУП ПОЛУЧЕН</h2>
+
+<p>
+Тебе доступна секретная миссия.
+</p>
+
+<p>
+Пройди все испытания
+и найди финальную точку.
+</p>
+
+<button onclick="startMission()">
+НАЧАТЬ МИССИЮ
 </button>
 
 </div>
 
 
-<div id="timer" class="hidden">
 
-<h2>⏳ Обратный отсчёт</h2>
-
-<h1 id="countdown"></h1>
-
-<button onclick="nextMission()">
-ПРОДОЛЖИТЬ
-</button>
-
-</div>
-
+<!-- ЭКРАН 3 -->
 
 <div id="mission1" class="hidden">
 
 <h2>🧩 МИССИЯ 1</h2>
+
+<p>
+Вспомни всё...
+</p>
 
 <p>
 На каком фото изображены люди,
@@ -59,15 +82,15 @@
 
 <div class="photos">
 
-<button onclick="checkAnswer(1)">
+<button onclick="answer(1)">
 📸 Фото 1
 </button>
 
-<button onclick="checkAnswer(2)">
+<button onclick="answer(2)">
 📸 Фото 2
 </button>
 
-<button onclick="checkAnswer(3)">
+<button onclick="answer(3)">
 📸 Фото 3
 </button>
 
@@ -76,9 +99,14 @@
 </div>
 
 
-<div id="result" class="hidden">
 
-<h2 id="resultText"></h2>
+<div id="success" class="hidden">
+
+<h2>✅ ЗАДАНИЕ ВЫПОЛНЕНО</h2>
+
+<p>
+Воспоминание восстановлено ❤️
+</p>
 
 <button onclick="nextMission()">
 ДАЛЬШЕ
