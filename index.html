@@ -30,7 +30,6 @@ body{
     flex-direction:column;
     text-align:center;
     padding:30px;
-    animation:fade .8s;
 }
 
 .screen.active{
@@ -38,80 +37,64 @@ body{
 }
 
 h1{
-    font-size:46px;
+    font-size:42px;
     margin-bottom:20px;
-    animation:pulse 2s infinite;
 }
 
 h2{
-    font-size:30px;
+    font-size:28px;
     margin-bottom:20px;
 }
 
 p{
-    font-size:22px;
+    font-size:20px;
     line-height:1.6;
 }
 
-.date{
-    font-size:34px;
-    margin:25px 0;
-}
-
-.timer{
-    font-size:48px;
-    font-weight:bold;
-    margin-top:20px;
-}
-
 button{
-    margin-top:45px;
-    padding:18px 45px;
+    margin-top:30px;
+    padding:16px 40px;
+    border-radius:40px;
     border:none;
-    border-radius:50px;
-    background:white;
-    color:black;
-    font-size:22px;
+    font-size:20px;
     cursor:pointer;
-    transition:.3s;
-    box-shadow:0 0 20px rgba(255,255,255,.4);
-}
-
-button:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 35px white;
 }
 
 .option{
     width:260px;
-    margin:10px;
+    margin:8px;
 }
 
-.correct{
-    background:#18c964;
-    color:white;
+.photo{
+    width:130px;
+    height:130px;
+    background:#333;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    margin:25px;
+    border-radius:15px;
 }
 
-.wrong{
-    background:#e5484d;
-    color:white;
-}
-
-@keyframes fade{
-from{opacity:0;transform:scale(.95);}
-to{opacity:1;transform:scale(1);}
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.03);}
-100%{transform:scale(1);}
+.bigphoto{
+    width:300px;
+    height:220px;
+    background:#555;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:80px;
+    margin:20px;
+    border-radius:20px;
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ЭКРАН 1 -->
 
@@ -121,17 +104,21 @@ to{opacity:1;transform:scale(1);}
 
 <h2>🛰️ Система запущена</h2>
 
-<p>До начала секретной миссии осталось</p>
+<p>
+До начала секретной миссии осталось:
+</p>
 
-<div class="date">
-(0)
+<h1>
+00:00:00
+</h1>
+
+<button onclick="openAccess()">
+▶ ПРОДОЛЖИТЬ
+</button>
+
 </div>
 
-<div class="timer" id="timer">
-Загрузка...
-</div>
 
-</div>
 
 <!-- ЭКРАН 2 -->
 
@@ -140,16 +127,9 @@ to{opacity:1;transform:scale(1);}
 <h1>🔐 ДОСТУП ПОДТВЕРЖДЁН</h1>
 
 <p>
-
-██████████████████<br><br>
-
 Агент, твоя личность подтверждена.<br><br>
 
-Ты получил доступ к секретной миссии.<br><br>
-
-Каждое следующее задание приблизит тебя
-к главному сюрпризу.
-
+Секретная миссия активирована.
 </p>
 
 <button onclick="startMission()">
@@ -158,27 +138,29 @@ to{opacity:1;transform:scale(1);}
 
 </div>
 
-<!-- ЭКРАН 3 — ВОССТАНОВЛЕНИЕ ПАМЯТИ -->
+
+
+<!-- ЭКРАН 3 -->
 
 <div class="screen" id="screen3">
 
 <h1>🧠 ВОССТАНОВЛЕНИЕ ПАМЯТИ</h1>
 
 <p>
-Часть воспоминаний была повреждена.<br><br>
+Часть воспоминаний повреждена.<br><br>
 
-Чтобы получить доступ к секретному файлу,<br>
-необходимо восстановить события прошлого.
+Нужно восстановить события прошлого.
 </p>
 
 <button onclick="memoryStart()">
-▶ НАЧАТЬ ВОССТАНОВЛЕНИЕ
+▶ НАЧАТЬ
 </button>
 
 </div>
 
 
-<!-- ЭКРАН 4 — ПЕРВОЕ ФОТО -->
+
+<!-- ЭКРАН 4 -->
 
 <div class="screen" id="screen4">
 
@@ -188,66 +170,42 @@ to{opacity:1;transform:scale(1);}
 Где сделано это фото?
 </h2>
 
-<p>
-Фрагмент изображения найден.<br>
-Попробуй восстановить воспоминание.
-</p>
-
-<div style="
-width:120px;
-height:120px;
-background:#333;
-margin:25px auto;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:40px;
-">
+<div class="photo">
 📷
 </div>
 
+
+<button class="option" onclick="wrong()">
+Страна 1
+</button>
+
+<button class="option" onclick="correct()">
+Страна 2
+</button>
+
+<button class="option" onclick="wrong()">
+Страна 3
+</button>
+
+<button class="option" onclick="wrong()">
+Страна 4
+</button>
+
+
+
+<div id="result" style="display:none">
+
+<p>
+🧠 Воспоминание восстановлено
+</p>
+
+
+<div class="bigphoto">
+📷
 </div>
 
 
-<!-- ЭКРАН 5 — МИССИЯ 2 -->
-
-<div class="screen" id="screen5">
-
-<h1>📷 МИССИЯ 2</h1>
-
-<h2>
-Найди правильное воспоминание
-</h2>
-
-<p>
-На каком фото люди, которые закрыли ипотеку?
-</p>
-
-
-<button class="option" onclick="wrongAnswer()">
-📷 Фото 1
-</button>
-
-<button class="option" onclick="answerMission2()">
-📷 Фото 2
-</button>
-
-<button class="option" onclick="wrongAnswer()">
-📷 Фото 3
-</button>
-
-<button class="option" onclick="wrongAnswer()">
-📷 Фото 4
-</button>
-
-
-<div id="mission2Result" style="display:none;">
-
-<p>
-🏠 Воспоминание подтверждено
-</p>
-
-<button onclick="goMission3()">
+<button>
 ▶ ДАЛЕЕ
 </button>
 
@@ -256,40 +214,21 @@ font-size:40px;
 
 </div>
 
-<button onclick="showPhoto()">
-🔍 Открыть фото
-</button>
 
-<div id="photoBlock" style="display:none;">
-
-<p>
-Большое фото восстановлено.
-</p>
-
-<button onclick="answerCorrect()">
-✅ Это место
-</button>
-
-</div>
-
-</div>
 
 <script>
 
-let target = new Date(0);
 
+function openAccess(){
 
-function updateTimer(){
+document.getElementById("screen1")
+.classList.remove("active");
 
-document.getElementById("timer").innerHTML =
-"00д 00ч 00м 00с";
+document.getElementById("screen2")
+.classList.add("active");
 
 }
 
-
-setInterval(updateTimer,1000);
-
-updateTimer();
 
 
 function startMission(){
@@ -316,40 +255,22 @@ document.getElementById("screen4")
 
 
 
-function showPhoto(){
+function correct(){
 
-document.getElementById("photoBlock")
+document.getElementById("result")
 .style.display="block";
 
 }
 
 
 
-function answerCorrect(){
+function wrong(){
 
-document.getElementById("photoBlock")
-
-.style.display="block";
-
-}
-
-function answerMission2(){
-
-document.getElementById("mission2Result")
-.style.display="block";
+alert("❌ Неверно. Попробуй ещё раз.");
 
 }
 
 
-function goMission3(){
-
-document.getElementById("screen5")
-.classList.remove("active");
-
-document.getElementById("screen6")
-.classList.add("active");
-
-}
 </script>
 
 
