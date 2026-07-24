@@ -1,191 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-<title>SECRET MISSION</title>
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-
-<body>
-
-
-<div class="game">
-
-
-<h1>🎮 SECRET MISSION</h1>
-
-
-<div class="progress">
-
-Миссия:
-<span id="missionNumber">0</span>/4
-
-<div class="bar">
-<div id="barFill"></div>
-</div>
-
-</div>
-
-
-
-<!-- ЭКРАН 1 - ТАЙМЕР -->
-
+<!-- ЭКРАН 1 -->
 <div id="screen1">
 
 <h2>🛰 Система запущена</h2>
 
-<p>
-До начала секретной миссии:
-</p>
+<p>До начала секретной миссии:</p>
 
+<h1 id="timer"></h1>
 
-<h1 id="timer">
-00 дней 00 часов 00 минут 00 секунд
-</h1>
-
-
-<p>
-🟢 СТАТУС: ОЖИДАНИЕ МИССИИ
-</p>
-
+<p>🟢 СТАТУС: ОЖИДАНИЕ МИССИИ</p>
 
 </div>
 
 
 
-
-
-<!-- ЭКРАН 2 - ДОСТУП -->
-
-<div id="screen2" class="hidden">
-
+<!-- ЭКРАН 2 -->
+<div id="screen2" style="display:none;">
 
 <h2>🚨 ДОСТУП ПОЛУЧЕН</h2>
 
-
-<p>
-Тебе доступна секретная миссия.
-</p>
-
-
-<p>
-Тебе предстоит пройти задания,
-восстановить воспоминания
-и найти финальную точку.
-</p>
-
+<p>Тебе доступна секретная миссия.</p>
 
 <button onclick="startMission()">
-
 НАЧАТЬ МИССИЮ
-
 </button>
-
 
 </div>
 
 
 
-
-
-
-
-<!-- ЭКРАН 3 - ПЕРВОЕ ЗАДАНИЕ -->
-
-
-<div id="mission1" class="hidden">
-
+<!-- МИССИЯ 1 -->
+<div id="mission1" style="display:none;">
 
 <h2>🧩 МИССИЯ 1</h2>
-
-
-<h3>
-Вспомни всё...
-</h3>
-
 
 <p>
 На каком фото изображены люди,
 которые закрыли ипотеку?
 </p>
 
-
-
-<div class="photos">
-
-
-<div class="photo"
-onclick="answer(1)">
-📸 Фото 1
-</div>
-
-
-
-<div class="photo"
-onclick="answer(2)">
-📸 Фото 2
-</div>
-
-
-
-<div class="photo"
-onclick="answer(3)">
-📸 Фото 3
-</div>
-
-
+<button>📸 Фото 1</button>
+<button>📸 Фото 2</button>
+<button>📸 Фото 3</button>
 
 </div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- УСПЕХ -->
-
-
-<div id="success" class="hidden">
-
-
-<h2>
-✅ ЗАДАНИЕ ВЫПОЛНЕНО
-</h2>
-
-
-<p>
-Воспоминание восстановлено ❤️
-</p>
-
-
-<button onclick="nextMission()">
-
-ДАЛЬШЕ
-
-</button>
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-<script src="script.js"></script>
-
-
-</body>
-
-</html>
