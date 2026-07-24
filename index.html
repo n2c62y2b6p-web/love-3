@@ -9,105 +9,94 @@
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:#050505;
-    color:white;
-    font-family:Arial,sans-serif;
-    overflow:hidden;
+background:#050505;
+color:white;
+font-family:Arial,sans-serif;
 }
 
 .screen{
-    display:none;
-    width:100%;
-    height:100vh;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-    padding:30px;
+display:none;
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:30px;
 }
 
 .screen.active{
-    display:flex;
+display:flex;
 }
 
 h1{
-    font-size:42px;
-    margin-bottom:20px;
+font-size:42px;
+margin-bottom:20px;
 }
 
 h2{
-    font-size:28px;
-    margin-bottom:20px;
+font-size:28px;
+margin-bottom:20px;
 }
 
 p{
-    font-size:20px;
-    line-height:1.6;
+font-size:20px;
+line-height:1.5;
 }
 
 button{
-    margin-top:30px;
-    padding:16px 40px;
-    border-radius:40px;
-    border:none;
-    font-size:20px;
-    cursor:pointer;
+margin-top:25px;
+padding:15px 35px;
+border-radius:40px;
+border:none;
+font-size:20px;
+cursor:pointer;
 }
 
 .option{
-    width:260px;
-    margin:8px;
+width:260px;
+margin:8px;
 }
 
 .photo{
-    width:130px;
-    height:130px;
-    background:#333;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:50px;
-    margin:25px;
-    border-radius:15px;
+width:130px;
+height:130px;
+overflow:hidden;
+margin:25px;
+border-radius:15px;
+}
+
+.photo img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .bigphoto{
-    width:300px;
-    height:220px;
-    background:#555;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:80px;
-    margin:20px;
-    border-radius:20px;
+width:300px;
+height:220px;
+overflow:hidden;
+margin:20px;
+border-radius:20px;
 }
 
-.photo img,
 .bigphoto img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:15px;
-}
-
-</style>
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ЭКРАН 1 -->
 
 <div class="screen active" id="screen1">
 
@@ -116,8 +105,7 @@ button{
 <h2>🛰️ Система запущена</h2>
 
 <p>
-Система готова.<br>
-Миссия ожидает запуска.
+Миссия готова к запуску
 </p>
 
 <button onclick="openAccess()">
@@ -126,7 +114,6 @@ button{
 
 </div>
 
-<!-- ЭКРАН 2 -->
 
 <div class="screen" id="screen2">
 
@@ -134,7 +121,6 @@ button{
 
 <p>
 Агент, твоя личность подтверждена.<br><br>
-
 Секретная миссия активирована.
 </p>
 
@@ -145,16 +131,12 @@ button{
 </div>
 
 
-
-<!-- ЭКРАН 3 -->
-
 <div class="screen" id="screen3">
 
 <h1>🧠 ВОССТАНОВЛЕНИЕ ПАМЯТИ</h1>
 
 <p>
-Часть воспоминаний повреждена.<br><br>
-
+Часть воспоминаний повреждена.<br>
 Нужно восстановить события прошлого.
 </p>
 
@@ -165,9 +147,6 @@ button{
 </div>
 
 
-
-<!-- ЭКРАН 4 -->
-
 <div class="screen" id="screen4">
 
 <h1>📷 МИССИЯ 1</h1>
@@ -176,38 +155,28 @@ button{
 Где сделано это фото?
 </h2>
 
+
 <div class="photo">
-📷<img src="IMG_7899.2.JPG">
+<img src="IMG_7899.2.JPG">
 </div>
-<p>
 
-Где сделано это фото?
-
-</p>
 
 <button class="option" onclick="wrongAnswer()">
-
 Анапа
-
 </button>
 
 <button class="option" onclick="correctAnswer()">
-
 Турция
-
 </button>
 
 <button class="option" onclick="wrongAnswer()">
-
 Шри-Ланка
-
 </button>
 
 <button class="option" onclick="wrongAnswer()">
-
 Тайланд
-
 </button>
+
 
 <div id="bigPhoto" style="display:none;">
 
@@ -218,67 +187,10 @@ button{
 </div>
 
 <p>
-✅ Воспоминание восстановлено
-</p>
-
-<button onclick="nextMission()">
-▶ ДАЛЕЕ
-</button>
-
-</div>
-
-✅ Воспоминание восстановлено
-
-</p>
-
-<div style="
-
-width:300px;
-
-height:220px;
-
-background:#555;
-
-margin:20px auto;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:70px;
-
-border-radius:15px;
-
-">
-
-📷
-
-</div>
-
-<button onclick="nextMission()">
-
-▶ ДАЛЕЕ
-
-</button>
-
-</div>
-
-
-<div id="result" style="display:none">
-
-<p>
 🧠 Воспоминание восстановлено
 </p>
 
-
-<div class="bigphoto">
-📷
-</div>
-
-
-<button>
+<button onclick="nextMission()">
 ▶ ДАЛЕЕ
 </button>
 
@@ -287,10 +199,36 @@ border-radius:15px;
 
 </div>
 
+
+<script>
+
+function openAccess(){
+
+screen1.classList.remove("active");
+screen2.classList.add("active");
+
+}
+
+
+function startMission(){
+
+screen2.classList.remove("active");
+screen3.classList.add("active");
+
+}
+
+
+function memoryStart(){
+
+screen3.classList.remove("active");
+screen4.classList.add("active");
+
+}
+
+
 function correctAnswer(){
 
-document.getElementById("bigPhoto")
-.style.display="block";
+document.getElementById("bigPhoto").style.display="block";
 
 }
 
@@ -304,64 +242,9 @@ alert("❌ Неверно. Попробуй ещё раз.");
 
 function nextMission(){
 
-alert("Следующая миссия загружается...");
+alert("Следующая миссия");
 
 }
-
-<script>
-
-
-function openAccess(){
-
-document.getElementById("screen1")
-.classList.remove("active");
-
-document.getElementById("screen2")
-.classList.add("active");
-
-}
-
-
-
-function startMission(){
-
-document.getElementById("screen2")
-.classList.remove("active");
-
-document.getElementById("screen3")
-.classList.add("active");
-
-}
-
-
-
-function memoryStart(){
-
-document.getElementById("screen3")
-.classList.remove("active");
-
-document.getElementById("screen4")
-.classList.add("active");
-
-}
-
-
-
-function correct(){
-
-document.getElementById("result")
-.style.display="block";
-
-}
-
-
-
-function wrong(){
-
-alert("❌ Неверно. Попробуй ещё раз.");
-
-}
-
 
 </script>
 
