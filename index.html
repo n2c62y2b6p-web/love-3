@@ -18,6 +18,13 @@
 Нажми кнопку, чтобы начать игру
 </p>
 
+<h2>⏳ До открытия миссии:</h2>
+
+<div id="timer">
+
+00:00:00:00
+
+</div>
 <button onclick="startGame()">
 НАЧАТЬ
 </button>
@@ -37,7 +44,23 @@
 
 </div>
 
+let eventDate = new Date("2026-08-08 12:00:00").getTime();
 
+let timer = setInterval(function() {
+
+let now = new Date().getTime();
+
+let distance = eventDate - now;
+
+let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("timer").innerHTML =
+days + "д " + hours + "ч " + minutes + "м " + seconds + "с";
+
+}, 1000);
 <script>
 
 function startGame() {
