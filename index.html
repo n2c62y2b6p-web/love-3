@@ -281,6 +281,111 @@ alert("Следующая миссия");
 
 
 </div>
+
+<!-- ЭКРАН 5 — МИССИЯ 2 -->
+
+<div class="screen" id="screen5">
+
+<h1>📷 МИССИЯ 2</h1>
+
+<h2>
+Найди правильное воспоминание
+</h2>
+
+<p>
+На каком фото люди, которые закрыли ипотеку?
+</p>
+
+<button class="option" onclick="wrongAnswer()">
+📷 Фото 1
+</button>
+
+<button class="option" onclick="mission2Correct()">
+📷 Фото 2
+</button>
+
+<button class="option" onclick="wrongAnswer()">
+📷 Фото 3
+</button>
+
+<button class="option" onclick="wrongAnswer()">
+📷 Фото 4
+</button>
+
+<div id="mission2Result"></div>
+
+</div>
+
+
+<script>
+
+function openAccess(){
+
+screen1.classList.remove("active");
+screen2.classList.add("active");
+
+}
+
+
+function startMission(){
+
+screen2.classList.remove("active");
+screen3.classList.add("active");
+
+}
+
+
+function memoryStart(){
+
+screen3.classList.remove("active");
+screen4.classList.add("active");
+
+}
+
+
+function correctAnswer(){
+
+document.getElementById("bigPhoto").style.display="block";
+
+}
+
+
+function wrongAnswer(){
+
+alert("❌ Неверно. Попробуй ещё раз.");
+
+}
+
+
+function nextMission(){
+
+screen4.classList.remove("active");
+screen5.classList.add("active");
+
+}
+
+
+function mission2Correct(){
+
+document.getElementById("mission2Result").innerHTML = `
+
+<p>
+🏠 Воспоминание подтверждено
+</p>
+
+<button onclick="alert('Следующая миссия')">
+▶ ДАЛЕЕ
+</button>
+
+`;
+
+}
+
+</script>
+
+
+</body>
+</html>
 </script>
 
 
