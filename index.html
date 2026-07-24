@@ -1,24 +1,214 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SECRET MISSION</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: #050505;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    animation: fade 1s;
+}
+
+.screen.active {
+    display: flex;
+}
+
+h1 {
+    font-size: 42px;
+    letter-spacing: 3px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.timer {
+    font-size: 45px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 32px;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 40px;
+    padding: 18px 50px;
+    font-size: 22px;
+    border-radius: 40px;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+
+@keyframes fade {
+    from {
+        opacity:0;
+        transform:scale(0.9);
+    }
+    to {
+        opacity:1;
+        transform:scale(1);
+    }
+}
+</style>
+
 </head>
 
 <body>
 
-<div>
 
-<h1>🎮 SECRET MISSION</h1>
+<!-- ЭКРАН 1 -->
 
-<h2>🛰 Система запущена</h2>
+<div class="screen active" id="screen1">
+
+<h1>🎮<br>SECRET MISSION</h1>
+
+<h2>🛰️ Система запущена</h2>
 
 <p>До начала секретной миссии:</p>
 
-<h1>08.08.2026</h1>
+<div class="date">
+08.08.2026
+</div>
 
-<p>⏳ ОБРАТНЫЙ ОТСЧЁТ</p>
+<div class="timer" id="timer">
+Загрузка...
+</div>
 
 </div>
+
+
+
+<!-- ЭКРАН 2 -->
+
+<div class="screen" id="screen2">
+
+<h1>🔐</h1>
+
+<h2>Секретная миссия доступна</h2>
+
+<p>
+У тебя есть одно важное задание.
+</p>
+
+<button onclick="startMission()">
+НАЧАТЬ
+</button>
+
+</div>
+
+
+
+<!-- ЭКРАН 3 -->
+
+<div class="screen" id="screen3">
+
+<h1>🌍 Уровень 1</h1>
+
+<h2>
+Найди страну
+</h2>
+
+<p>
+Первое задание начинается...
+</p>
+
+</div>
+
+
+
+<script>
+
+let target = new Date("2026-08-08T12:00:00");
+
+function updateTimer(){
+
+let now = new Date();
+
+let diff = target - now;
+
+
+if(diff <= 0){
+
+document.getElementById("screen1")
+.classList.remove("active");
+
+document.getElementById("screen2")
+.classList.add("active");
+
+return;
+
+}
+
+
+let days = Math.floor(diff/(1000*60*60*24));
+
+let hours = Math.floor(
+(diff/(1000*60*60))%24
+);
+
+let minutes = Math.floor(
+(diff/(1000*60))%60
+);
+
+let seconds = Math.floor(
+(diff/1000)%60
+);
+
+
+document.getElementById("timer").innerHTML =
+days+"д "+
+hours+"ч "+
+minutes+"м "+
+seconds+"с";
+
+}
+
+
+setInterval(updateTimer,1000);
+
+updateTimer();
+
+
+
+function startMission(){
+
+document.getElementById("screen2")
+.classList.remove("active");
+
+document.getElementById("screen3")
+.classList.add("active");
+
+}
+
+</script>
+
 
 </body>
 </html>
