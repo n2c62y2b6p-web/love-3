@@ -22,11 +22,24 @@
 НАЧАТЬ
 </button>
 
+<div id="gameScreen" style="display:none;">
+
+<h1>🚀 МИССИЯ НАЧАЛАСЬ</h1>
+
+<h2>Твое первое задание:</h2>
+
+<p>
+Найти секретную точку встречи ❤️
+</p>
+
+</div>
+
+
 <script>
 
 function startGame() {
 
-    alert("🎮 Миссия началась! Приготовься...");
+    document.getElementById("gameScreen").style.display = "block";
 
 }
 
