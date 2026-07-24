@@ -7,100 +7,121 @@
 <title>SECRET MISSION</title>
 
 <style>
-* {
-    box-sizing: border-box;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    background: #050505;
-    color: white;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
+body{
+    background:#050505;
+    color:white;
+    font-family:Arial,sans-serif;
+    overflow:hidden;
 }
 
-.screen {
-    display: none;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 30px;
-    animation: fade 1s;
+.screen{
+    display:none;
+    width:100%;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:30px;
+    animation:fade .8s;
 }
 
-.screen.active {
-    display: flex;
+.screen.active{
+    display:flex;
 }
 
-h1 {
-    font-size: 42px;
-    letter-spacing: 3px;
+h1{
+    font-size:46px;
+    margin-bottom:20px;
+    animation:pulse 2s infinite;
 }
 
-h2 {
-    font-size: 30px;
+h2{
+    font-size:30px;
+    margin-bottom:20px;
 }
 
-.timer {
-    font-size: 45px;
-    margin-top: 30px;
-    font-weight: bold;
+p{
+    font-size:22px;
+    line-height:1.6;
 }
 
-.date {
-    font-size: 32px;
-    margin-top: 20px;
+.date{
+    font-size:34px;
+    margin:25px 0;
 }
 
-button {
-    margin-top: 40px;
-    padding: 18px 50px;
-    font-size: 22px;
-    border-radius: 40px;
-    border: none;
-    background: white;
-    color: black;
-    cursor: pointer;
+.timer{
+    font-size:48px;
+    font-weight:bold;
+    margin-top:20px;
 }
 
-@keyframes fade {
-
-    from {
-
-        opacity:0;
-
-        transform:scale(0.9);
-
-    }
-
-    to {
-
-        opacity:1;
-
-        transform:scale(1);
-
-    }
-
+button{
+    margin-top:45px;
+    padding:18px 45px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:black;
+    font-size:22px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 0 20px rgba(255,255,255,.4);
 }
+
+button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 35px white;
+}
+
+.option{
+    width:260px;
+    margin:10px;
+}
+
+.correct{
+    background:#18c964;
+    color:white;
+}
+
+.wrong{
+    background:#e5484d;
+    color:white;
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(.95);}
+to{opacity:1;transform:scale(1);}
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.03);}
+100%{transform:scale(1);}
+}
+
 </style>
-
 </head>
 
 <body>
-
 
 <!-- ЭКРАН 1 -->
 
 <div class="screen active" id="screen1">
 
-<h1>🎮<br>SECRET MISSION</h1>
+<h1>🎮 SECRET MISSION</h1>
 
 <h2>🛰️ Система запущена</h2>
 
-<p>До начала секретной миссии:</p>
+<p>До начала секретной миссии осталось</p>
 
 <div class="date">
 08.08.2026
@@ -111,136 +132,130 @@ button {
 </div>
 
 </div>
-<div id="screen2" class="screen hidden">
-    <div class="mission-box">
-        <h1>🗝️ Секретная миссия</h1>
-
-        <p>
-            Тебе доступно особое задание.<br>
-            Готова начать путешествие?
-        </p>
-
-        <button onclick="startMission()">
-            ▶ Начать миссию
-        </button>
-    </div>
-</div>
 
 <!-- ЭКРАН 2 -->
 
 <div class="screen" id="screen2">
 
-    <h1>🔐 ДОСТУП ПОДТВЕРЖДЁН</h1>
+<h1>🔐 ДОСТУП ПОДТВЕРЖДЁН</h1>
 
-    <p style="font-size:20px; margin-top:30px; line-height:1.8; color:#9cff9c;">
+<p>
 
-████████████████████<br><br>
+██████████████████<br><br>
 
 Агент, твоя личность подтверждена.<br><br>
 
-Ты получил доступ<br>
+Ты получил доступ к секретной миссии.<br><br>
 
-к секретной миссии.<br><br>
+Каждое следующее задание приблизит тебя
+к главному сюрпризу.
 
-Каждое следующее задание<br>
+</p>
 
-приблизит тебя к главному призу.<br><br>
-
-████████████████████
-
-    </p>
-
-    <button onclick="startMission()">
-
-        ▶ НАЧАТЬ МИССИЮ
-
-    </button>
+<button onclick="startMission()">
+▶ НАЧАТЬ МИССИЮ
+</button>
 
 </div>
-
 
 <!-- ЭКРАН 3 -->
 
 <div class="screen" id="screen3">
 
-<h1>🌍 Уровень 1</h1>
+<h1>🌍 МИССИЯ №1</h1>
 
-<h2>
-Найди страну
-</h2>
+<h2>Угадай страну</h2>
 
 <p>
-Первое задание начинается...
+С неё начинается наше путешествие.
 </p>
+
+<button class="option" onclick="wrong(this)">
+Испания
+</button>
+
+<button class="option" onclick="wrong(this)">
+Италия
+</button>
+
+<button class="option" onclick="correct(this)">
+ТУРЦИЯ
+</button>
+
+<button class="option" onclick="wrong(this)">
+Греция
+</button>
 
 </div>
 
 <script>
 
-let target = new Date("2026-08-08T12:00:00");
+const target=new Date("2026-08-08T12:00:00");
 
 function updateTimer(){
 
-let now = new Date();
+const now=new Date();
 
-let diff = target - now;
+const diff=target-now;
 
+if(diff<=0){
 
-if(diff <= 0){
+screen1.classList.remove("active");
+screen2.classList.add("active");
 
-document.getElementById("screen1")
-.classList.remove("active");
-
-document.getElementById("screen2")
-.classList.add("active");
+clearInterval(timerLoop);
 
 return;
 
 }
 
+const d=Math.floor(diff/1000/60/60/24);
+const h=Math.floor(diff/1000/60/60)%24;
+const m=Math.floor(diff/1000/60)%60;
+const s=Math.floor(diff/1000)%60;
 
-let days = Math.floor(diff/(1000*60*60*24));
-
-let hours = Math.floor(
-(diff/(1000*60*60))%24
-);
-
-let minutes = Math.floor(
-(diff/(1000*60))%60
-);
-
-let seconds = Math.floor(
-(diff/1000)%60
-);
-
-
-document.getElementById("timer").innerHTML =
-days+"д "+
-hours+"ч "+
-minutes+"м "+
-seconds+"с";
+document.getElementById("timer").innerHTML=
+d+"д "+
+h+"ч "+
+m+"м "+
+s+"с";
 
 }
 
-
-setInterval(updateTimer,1000);
+const timerLoop=setInterval(updateTimer,1000);
 
 updateTimer();
 
-
-
 function startMission(){
 
-document.getElementById("screen2")
-.classList.remove("active");
+screen2.classList.remove("active");
+screen3.classList.add("active");
 
-document.getElementById("screen3")
-.classList.add("active");
+}
+
+function wrong(btn){
+
+btn.classList.add("wrong");
+
+setTimeout(()=>{
+btn.classList.remove("wrong");
+},700);
+
+}
+
+function correct(btn){
+
+btn.classList.add("correct");
+
+setTimeout(()=>{
+
+alert("✅ Правильно! Следующая миссия скоро откроется.");
+
+},700);
 
 }
 
 </script>
-
 
 </body>
 </html>
