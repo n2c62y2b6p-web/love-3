@@ -224,4 +224,81 @@ font-size:40px;
 
 </div>
 
-    
+<script>
+
+let target = new Date(0);
+
+
+function updateTimer(){
+
+let now = new Date();
+
+let diff = target - now;
+
+
+if(diff <= 0){
+
+document.getElementById("screen1")
+.classList.remove("active");
+
+document.getElementById("screen2")
+.classList.add("active");
+
+return;
+
+}
+
+}
+
+
+setInterval(updateTimer,1000);
+
+updateTimer();
+
+
+
+function startMission(){
+
+document.getElementById("screen2")
+.classList.remove("active");
+
+document.getElementById("screen3")
+.classList.add("active");
+
+}
+
+
+
+function memoryStart(){
+
+document.getElementById("screen3")
+.classList.remove("active");
+
+document.getElementById("screen4")
+.classList.add("active");
+
+}
+
+
+
+function showPhoto(){
+
+document.getElementById("photoBlock")
+.style.display="block";
+
+}
+
+
+
+function answerCorrect(){
+
+alert("🧠 Воспоминание восстановлено!");
+
+}
+
+
+</script>
+
+
+</body>
+</html>
