@@ -10,7 +10,21 @@
 
 <body>
 
+<div id="startScreen">
+
 <h1>🎮 SECRET MISSION</h1>
+
+<h2>У тебя новое задание...</h2>
+
+<p>
+Нажми кнопку, чтобы начать игру
+</p>
+
+<button onclick="startGame()">
+НАЧАТЬ
+</button>
+
+</div>
 
 <h2>У тебя новое задание...</h2>
 
@@ -50,6 +64,12 @@
 <script>
 
 function startGame() {
+
+    document.getElementById("startScreen").style.display = "none";
+
+    document.getElementById("gameScreen").style.display = "block";
+
+}
 
     document.getElementById("gameScreen").style.display = "block";
 
