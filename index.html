@@ -158,104 +158,70 @@ to{opacity:1;transform:scale(1);}
 
 </div>
 
-<!-- ЭКРАН 3 -->
+<!-- ЭКРАН 3 — ВОССТАНОВЛЕНИЕ ПАМЯТИ -->
 
 <div class="screen" id="screen3">
 
-<h1>🌍 МИССИЯ №1</h1>
-
-<h2>Угадай страну</h2>
+<h1>🧠 ВОССТАНОВЛЕНИЕ ПАМЯТИ</h1>
 
 <p>
-С неё начинается наше путешествие.
+Часть воспоминаний была повреждена.<br><br>
+
+Чтобы получить доступ к секретному файлу,<br>
+необходимо восстановить события прошлого.
 </p>
 
-<button class="option" onclick="wrong(this)">
-Испания
-</button>
-
-<button class="option" onclick="wrong(this)">
-Италия
-</button>
-
-<button class="option" onclick="correct(this)">
-ТУРЦИЯ
-</button>
-
-<button class="option" onclick="wrong(this)">
-Греция
+<button onclick="memoryStart()">
+▶ НАЧАТЬ ВОССТАНОВЛЕНИЕ
 </button>
 
 </div>
 
-<script>
 
-const target=new Date("2026-08-08T12:00:00");
+<!-- ЭКРАН 4 — ПЕРВОЕ ФОТО -->
 
-function updateTimer(){
+<div class="screen" id="screen4">
 
-const now=new Date();
+<h1>📷 МИССИЯ 1</h1>
 
-const diff=target-now;
+<h2>
+Где сделано это фото?
+</h2>
 
-if(diff<=0){
+<p>
+Фрагмент изображения найден.<br>
+Попробуй восстановить воспоминание.
+</p>
 
-screen1.classList.remove("active");
-screen2.classList.add("active");
+<div style="
+width:120px;
+height:120px;
+background:#333;
+margin:25px auto;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+">
+📷
+</div>
 
-clearInterval(timerLoop);
+<button onclick="showPhoto()">
+🔍 Открыть фото
+</button>
 
-return;
+<div id="photoBlock" style="display:none;">
 
-}
+<p>
+Большое фото восстановлено.
+</p>
 
-const d=Math.floor(diff/1000/60/60/24);
-const h=Math.floor(diff/1000/60/60)%24;
-const m=Math.floor(diff/1000/60)%60;
-const s=Math.floor(diff/1000)%60;
+<button onclick="answerCorrect()">
+✅ Это место
+</button>
 
-document.getElementById("timer").innerHTML=
-d+"д "+
-h+"ч "+
-m+"м "+
-s+"с";
+</div>
 
-}
+</div>
 
-const timerLoop=setInterval(updateTimer,1000);
-
-updateTimer();
-
-function startMission(){
-
-screen2.classList.remove("active");
-screen3.classList.add("active");
-
-}
-
-function wrong(btn){
-
-btn.classList.add("wrong");
-
-setTimeout(()=>{
-btn.classList.remove("wrong");
-},700);
-
-}
-
-function correct(btn){
-
-btn.classList.add("correct");
-
-setTimeout(()=>{
-
-alert("✅ Правильно! Следующая миссия скоро откроется.");
-
-},700);
-
-}
-
-</script>
-
-</body>
-</html>
+    
